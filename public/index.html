@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0c2436" />
+    <title>HealthLink | Operations Console</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar">
+        <div class="brand">
+          <div class="brand-mark">✚</div>
+          <div>
+            <strong>HealthLink</strong>
+            <small>BLOOD SUPPLY NETWORK</small>
+          </div>
+        </div>
+
+        <div class="sidebar-label">WORKSPACE</div>
+        <nav aria-label="Main navigation">
+          <button class="nav-link active" data-page="overview">
+            <span>▦</span> Overview
+          </button>
+          <button class="nav-link" data-page="inventory">
+            <span>◫</span> Blood inventory
+          </button>
+          <button class="nav-link" data-page="requests">
+            <span>▤</span> Blood requests
+          </button>
+          <button class="nav-link" data-page="deliveries">
+            <span>⇢</span> Deliveries
+          </button>
+          <button class="nav-link" data-page="workflow">
+            <span>⬡</span> Multi-DB workflow
+          </button>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <div class="sidebar-label">CONNECTED SYSTEMS</div>
+          <div class="system"><i class="dot"></i> Oracle Database</div>
+          <div class="system"><i class="dot"></i> MongoDB</div>
+          <div class="system"><i class="dot"></i> Neo4j</div>
+          <p class="sidebar-note">
+            Connections are checked when operations run.
+          </p>
+        </div>
+      </aside>
+
+      <div class="main-wrap">
+        <header class="topbar">
+          <button class="mobile-menu" id="menu-toggle" aria-label="Toggle menu">
+            ☰
+          </button>
+          <div class="breadcrumb">
+            Workspace <span>/</span>
+            <strong id="breadcrumb">Overview</strong>
+          </div>
+          <div class="topbar-right">
+            <span class="environment">● LOCAL ENVIRONMENT</span>
+            <div class="avatar">HL</div>
+          </div>
+        </header>
+
+        <main class="content">
+          <!-- OVERVIEW -->
+          <section class="page active" id="page-overview">
+            <div class="page-heading">
+              <div>
+                <div class="eyebrow">OPERATIONS CENTER</div>
+                <h1>Blood supply overview</h1>
+                <p>
+                  Manage inventory, requests, and deliveries across your
+                  connected data systems.
+                </p>
+              </div>
+              <button class="primary" data-goto="workflow">
+                Run workflow <span>↗</span>
+              </button>
+            </div>
+
+            <div class="hero">
+              <div>
+                <span class="hero-tag">HEALTHLINK PLATFORM</span>
+                <h2>One workspace.<br />Three databases.</h2>
+                <p>
+                  Coordinate blood inventory in Oracle, review logistics in
+                  Neo4j, and inspect cold-chain records from MongoDB.
+                </p>
+                <button class="hero-button" data-goto="inventory">
+                  Manage inventory ↗
+                </button>
+              </div>
+              <div class="hero-art">
+                <div class="hero-center">✚</div>
+                <div class="orbit orbit-one">ORACLE</div>
+                <div class="orbit orbit-two">MONGO</div>
+                <div class="orbit orbit-three">NEO4J</div>
+              </div>
+            </div>
+
+            <div class="stats">
+              <div class="stat">
+                <div class="stat-top">DATABASES <span>◈</span></div>
+                <div class="stat-number">03</div>
+                <div class="stat-foot">Integrated technologies</div>
+              </div>
+              <div class="stat">
+                <div class="stat-top">ORACLE OPERATIONS <span>▦</span></div>
+                <div class="stat-number">06</div>
+                <div class="stat-foot">Dedicated API operations</div>
+              </div>
+              <div class="stat">
+                <div class="stat-top">WORKFLOW <span>⇢</span></div>
+                <div class="stat-number">01</div>
+                <div class="stat-foot">Cross-database readout</div>
+              </div>
+            </div>
+
+            <div class="section-heading">
+              <div>
+                <h2>Quick actions</h2>
+                <p>Jump into your most common operations</p>
+              </div>
+            </div>
+
+            <div class="quick-grid">
+              <button class="quick" data-goto="inventory">
+                <span class="quick-icon blue">◫</span>
+                <strong>Blood inventory</strong>
+                <small>Add, check, and reserve units</small>
+                <span class="quick-arrow">↗</span>
+              </button>
+              <button class="quick" data-goto="requests">
+                <span class="quick-icon orange">▤</span>
+                <strong>Process requests</strong>
+                <small>Check fulfillment and approval</small>
+                <span class="quick-arrow">↗</span>
+              </button>
+              <button class="quick" data-goto="deliveries">
+                <span class="quick-icon purple">⇢</span>
+                <strong>Create delivery</strong>
+                <small>Register an approved delivery</small>
+                <span class="quick-arrow">↗</span>
+              </button>
+              <button class="quick" data-goto="workflow">
+                <span class="quick-icon teal">⬡</span>
+                <strong>Complete workflow</strong>
+                <small>Oracle, MongoDB, and Neo4j</small>
+                <span class="quick-arrow">↗</span>
+              </button>
+            </div>
+          </section>
+
+          <!-- INVENTORY -->
+          <section class="page" id="page-inventory">
+            <div class="page-heading">
+              <div>
+                <div class="eyebrow">ORACLE DATABASE</div>
+                <h1>Blood inventory</h1>
+                <p>Register units, check availability, and reserve stock.</p>
+              </div>
+            </div>
+
+            <div class="panel-grid">
+              <div class="panel">
+                <div class="panel-head">
+                  <div class="panel-icon">＋</div>
+                  <div>
+                    <h2>Add blood unit</h2>
+                    <p>Create a new Oracle inventory record</p>
+                  </div>
+                </div>
+
+                <form id="form-add">
+                  <div class="form-grid">
+                    <label
+                      >Unit ID
+                      <input
+                        required
+                        min="1"
+                        type="number"
+                        id="add_unit_id"
+                        placeholder="e.g. 1005"
+                      />
+                    </label>
+                    <label
+                      >Center ID
+                      <input
+                        required
+                        min="1"
+                        type="number"
+                        id="add_center_id"
+                        value="1"
+                      />
+                    </label>
+                    <label
+                      >Blood group
+                      <select
+                        id="add_blood_group"
+                        required
+                        data-groups
+                      ></select>
+                    </label>
+                    <label
+                      >Status
+                      <select id="add_status">
+                        <option>Available</option>
+                        <option>Reserved</option>
+                        <option>Used</option>
+                        <option>Expired</option>
+                      </select>
+                    </label>
+                    <label
+                      >Collection date
+                      <input required type="date" id="collection_date" />
+                    </label>
+                    <label
+                      >Expiry date
+                      <input required type="date" id="expiry_date" />
+                    </label>
+                  </div>
+                  <button class="primary" type="submit">
+                    Add blood unit ↗
+                  </button>
+                </form>
+                <div
+                  id="add_unit_result"
+                  class="operation-result"
+                  aria-live="polite"
+                ></div>
+              </div>
+
+              <div class="stack">
+                <div class="panel">
+                  <div class="panel-head">
+                    <div class="panel-icon">◫</div>
+                    <div>
+                      <h2>Check available stock</h2>
+                      <p>Call Oracle's availability function</p>
+                    </div>
+                  </div>
+                  <form id="form-available">
+                    <div class="form-grid">
+                      <label
+                        >Center ID
+                        <input
+                          required
+                          min="1"
+                          type="number"
+                          id="stock_center_id"
+                          value="1"
+                        />
+                      </label>
+                      <label
+                        >Blood group
+                        <select id="blood_group" data-groups></select>
+                      </label>
+                    </div>
+                    <button class="primary" type="submit">
+                      Check availability ↗
+                    </button>
+                  </form>
+                  <div
+                    id="available_result"
+                    class="operation-result"
+                    aria-live="polite"
+                  ></div>
+                </div>
+
+                <div class="panel">
+                  <div class="panel-head">
+                    <div class="panel-icon">◈</div>
+                    <div>
+                      <h2>Reserve blood unit</h2>
+                      <p>Execute Oracle reservation procedure</p>
+                    </div>
+                  </div>
+                  <form id="form-reserve">
+                    <label
+                      >Blood unit ID
+                      <input
+                        required
+                        min="1"
+                        type="number"
+                        id="reserve_unit_id"
+                        value="1001"
+                      />
+                    </label>
+                    <button class="primary" type="submit">
+                      Reserve unit ↗
+                    </button>
+                  </form>
+                  <div
+                    id="reserve_result"
+                    class="operation-result"
+                    aria-live="polite"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- REQUESTS -->
+          <section class="page" id="page-requests">
+            <div class="page-heading">
+              <div>
+                <div class="eyebrow">ORACLE PL/SQL</div>
+                <h1>Blood requests</h1>
+                <p>
+                  Check fulfillment eligibility and process hospital requests.
+                </p>
+              </div>
+            </div>
+
+            <div class="panel narrow">
+              <div class="panel-head">
+                <div class="panel-icon">▤</div>
+                <div>
+                  <h2>Request processing</h2>
+                  <p>Execute package functions and procedures</p>
+                </div>
+              </div>
+              <label
+                >Request ID
+                <input
+                  required
+                  min="1"
+                  type="number"
+                  id="request_operation_id"
+                  value="5005"
+                />
+              </label>
+              <div class="button-row">
+                <button class="secondary" id="check-request" type="button">
+                  Check fulfillment
+                </button>
+                <button class="primary" id="process-request" type="button">
+                  Process request ↗
+                </button>
+              </div>
+              <div class="note">
+                Processing may change the request status in Oracle. Verify the
+                request before continuing.
+              </div>
+              <div
+                id="request_result"
+                class="operation-result"
+                aria-live="polite"
+              ></div>
+            </div>
+          </section>
+
+          <!-- DELIVERIES -->
+          <section class="page" id="page-deliveries">
+            <div class="page-heading">
+              <div>
+                <div class="eyebrow">LOGISTICS MANAGEMENT</div>
+                <h1>Deliveries</h1>
+                <p>Create deliveries linked to approved hospital requests.</p>
+              </div>
+            </div>
+
+            <div class="panel narrow">
+              <div class="panel-head">
+                <div class="panel-icon">⇢</div>
+                <div>
+                  <h2>Create delivery</h2>
+                  <p>Oracle validates request approval before insertion</p>
+                </div>
+              </div>
+              <form id="form-delivery">
+                <div class="form-grid">
+                  <label
+                    >Delivery ID
+                    <input
+                      required
+                      min="1"
+                      type="number"
+                      id="delivery_id"
+                      value="7005"
+                    />
+                  </label>
+                  <label
+                    >Center ID
+                    <input
+                      required
+                      min="1"
+                      type="number"
+                      id="delivery_center_id"
+                      value="1"
+                    />
+                  </label>
+                  <label
+                    >Request ID
+                    <input
+                      required
+                      min="1"
+                      type="number"
+                      id="delivery_request_id"
+                      value="5005"
+                    />
+                  </label>
+                </div>
+                <button class="primary" type="submit">Create delivery ↗</button>
+              </form>
+              <div
+                id="delivery_result"
+                class="operation-result"
+                aria-live="polite"
+              ></div>
+            </div>
+          </section>
+
+          <!-- MULTI-DATABASE WORKFLOW -->
+          <section class="page" id="page-workflow">
+            <div class="page-heading">
+              <div>
+                <div class="eyebrow">INTEGRATED OPERATIONS</div>
+                <h1>Multi-database workflow</h1>
+                <p>
+                  Explore MongoDB unit profiles, Neo4j routes, and Oracle
+                  request records in one view.
+                </p>
+              </div>
+            </div>
+
+            <div class="workflow-banner">
+              <span class="db-pill">MongoDB</span>
+              <span>→</span>
+              <span class="db-pill">Neo4j</span>
+              <span>→</span>
+              <span class="db-pill">Oracle</span>
+            </div>
+
+            <div class="panel">
+              <div class="panel-head">
+                <div class="panel-icon">⬡</div>
+                <div>
+                  <h2>Run complete workflow</h2>
+                  <p>Uses your existing multi-database API endpoint</p>
+                </div>
+              </div>
+              <form id="form-workflow">
+                <div class="form-grid four">
+                  <label
+                    >Blood unit ID
+                    <input
+                      required
+                      min="1"
+                      type="number"
+                      id="unit_id"
+                      value="1001"
+                    />
+                  </label>
+                  <label
+                    >Center ID
+                    <input
+                      required
+                      min="1"
+                      type="number"
+                      id="center_id"
+                      value="1"
+                    />
+                  </label>
+                  <label
+                    >Hospital ID
+                    <input
+                      required
+                      min="1"
+                      type="number"
+                      id="hospital_id"
+                      value="103"
+                    />
+                  </label>
+                  <label
+                    >Request ID
+                    <input
+                      required
+                      min="1"
+                      type="number"
+                      id="request_id"
+                      value="5005"
+                    />
+                  </label>
+                </div>
+                <button class="primary" type="submit">
+                  Run complete workflow ↗
+                </button>
+              </form>
+            </div>
+            <div id="result" class="workflow-result" aria-live="polite"></div>
+          </section>
+        </main>
+
+        <footer class="footer">
+          HealthLink <span>·</span> Multi-database blood supply management
+          <span>·</span>
+          Local development
+        </footer>
+      </div>
+    </div>
+    <script src="/script.js" defer></script>
+  </body>
+</html>
